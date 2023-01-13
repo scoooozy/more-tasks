@@ -1,6 +1,7 @@
 import React from "react";
+import { memberName } from "./Server";
 function handleSubmit() { 
-    var memberName = document.getElementById("funny").value;
+    memberName = document.getElementById("funny").value;
     console.log(memberName+' funny')
 }
 class UserForm extends React.Component {
@@ -31,4 +32,3 @@ class UserForm extends React.Component {
    
 }
 export default UserForm;
-export var memberName;
