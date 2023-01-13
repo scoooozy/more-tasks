@@ -1,7 +1,7 @@
 const DB = require("sigidb");
 const db = DB("db.sqlite");
 global.db = db;
-import { memberName } from "../UserForm/UserForm";
+import { memberName } from "../src/components/UserForm/UserForm";
 
 class Person{
   constructor(fullName,branch,leader){
