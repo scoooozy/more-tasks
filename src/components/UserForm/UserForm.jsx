@@ -1,63 +1,34 @@
 import React from "react";
+import { memberName } from "./Server";
+function handleSubmit() { 
+    memberName = document.getElementById("funny").value;
+    console.log(memberName+' funny')
+}
 class UserForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            name: "",
-            email: "",
-            brthDay: "",
-            course: "HTML&CSS",
-        }
+            name: '',
+        };
     }
+
     handleUserName = (event) => {
-        this.setState({ name: event.target.value })
-        console.log(this.state.name)
+        this.setState({ name: event.target.value });
     }
-    handleEmail = (event) => {
-        this.setState({email: event.target.value})
+    
+    handleSubmit = (event) => {
+        event.preventDefault();
     }
-    handleBrthDay = (event) => {
-        this.setState({brthDay: event.target.value})
-    }
-    handleCourse = (event) => {
-        this.setState({course: event.target.value})
-    }
-    handleForm = (event) => {
-        event.preventDefault()
-        let { name, email, brthDay, course} = this.state
-        let user = {
-            name,
-            email,
-            brthDay,
-            course,
-        }
-        this.props.handleAddUser(user)
-        this.setState({
-                name: "",
-                email: "",
-                brthDay: "",
-                course: "HTML&CSS",
-        })
-    }
+
     render() {
-        let { name, email, brthDay} = this.state 
-        return  <div>
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <input onChange={this.handleUserName} type="text" id="funny" value={this.state.name} />
+                <button type="submit" onClick={handleSubmit}>Submit</button>
+            </form>
             
-        <form onSubmit={this.handleForm} action="">
-            <h1>Form-app</h1>
-            <p><label htmlFor="">Name</label><input onChange={this.handleUserName} type="text" value={name} /></p>
-            <p><label htmlFor="">email</label><input type="email" onChange={this.handleEmail}  value={email} /></p>
-            <p><label htmlFor="">Birth Day</label><input onChange={this.handleBrthDay} type="date" value={brthDay}/></p>
-            <p><label htmlFor="" >Course</label>
-                <select onChange={this.handleCourse}>
-                    <option value="HTML&CSS">HTML&CSS</option>
-                    <option value="JavaScript">JavaScript</option>
-                    <option value="Java">Java</option>
-            </select>
-            </p>
-            <button>Send</button>
-        </form>
-    </div>
+        );
     }
+   
 }
 export default UserForm;
