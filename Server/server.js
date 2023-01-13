@@ -10,11 +10,11 @@ class Person{
 
 }
 let newPerson = new Person("Paul K.", "Build", false)
-console.log(newPerson)
-// db.set("person", newPerson)
+//console.log(newPerson)
+db.set("person2", newPerson)
 // db.set("test", "hey");
 console.log('====================================');
-console.log(db.get("person"));
+console.log(db.all());
 console.log('====================================');
 
 
