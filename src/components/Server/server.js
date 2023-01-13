@@ -1,6 +1,8 @@
 const DB = require("sigidb");
 const db = DB("db.sqlite");
 global.db = db;
+import { memberName } from "../UserForm/UserForm";
+
 class Person{
   constructor(fullName,branch,leader){
     this.fullName = fullName
@@ -9,7 +11,7 @@ class Person{
   }
 
 }
-let newPerson = new Person("Paul K.", "Build", false)
+let newPerson = new Person(memberName, "Build", false)
 //console.log(newPerson)
 db.set("person2", newPerson)
 // db.set("test", "hey");
