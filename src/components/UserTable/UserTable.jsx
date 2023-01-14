@@ -4,18 +4,18 @@ function UserTable({ users, handleButton}) {
     <thead>
         <tr>
             <th>Name:</th>
-            <th>Email:</th>
-            <th>Birthday:</th>
-            <th>Course:</th>
+            <th>task:</th>
+            <th>description:</th>
+            <th>department:</th>
         </tr>
     </thead>
     <tbody>
         {users.map((user) => {
             return <tr>
                 <td>{user.name }</td>
-                <td>{ user.email}</td>
-                <td>{user.brthDay }</td>
-                <td>{user.course }</td>
+                <td>{ user.task}</td>
+                <td>{user.description }</td>
+                <td>{user.department }</td>
             </tr>
         })}
     </tbody>

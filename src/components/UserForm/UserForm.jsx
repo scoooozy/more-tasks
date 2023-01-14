@@ -4,55 +4,56 @@ class UserForm extends React.Component {
         super(props)
         this.state = {
             name: "",
-            email: "",
-            brthDay: "",
-            course: "HTML&CSS",
+            task: "",
+            description: "",
+            department: "Build",
         }
     }
     handleUserName = (event) => {
         this.setState({ name: event.target.value })
         console.log(this.state.name)
     }
-    handleEmail = (event) => {
-        this.setState({email: event.target.value})
+    handletask = (event) => {
+        this.setState({task: event.target.value})
     }
-    handleBrthDay = (event) => {
-        this.setState({brthDay: event.target.value})
+    handledescription = (event) => {
+        this.setState({description: event.target.value})
     }
-    handleCourse = (event) => {
-        this.setState({course: event.target.value})
+    handledepartment = (event) => {
+        this.setState({department: event.target.value})
     }
     handleForm = (event) => {
         event.preventDefault()
-        let { name, email, brthDay, course} = this.state
+        let { name, task, description, department} = this.state
         let user = {
             name,
-            email,
-            brthDay,
-            course,
+            task,
+            description,
+            department,
         }
         this.props.handleAddUser(user)
         this.setState({
                 name: "",
-                email: "",
-                brthDay: "",
-                course: "HTML&CSS",
+                task: "",
+                description: "",
+                department: "HTML&CSS",
         })
     }
     render() {
-        let { name, email, brthDay} = this.state 
+        let { name, task, description} = this.state 
         return  <div>
             
         <form onSubmit={this.handleForm} action="">
             <h1>Form-app</h1>
             <p><label htmlFor="">Name</label><input onChange={this.handleUserName} type="text" value={name} /></p>
-            <p><label htmlFor="">email</label><input type="email" onChange={this.handleEmail}  value={email} /></p>
-            <p><label htmlFor="">Birth Day</label><input onChange={this.handleBrthDay} type="date" value={brthDay}/></p>
-            <p><label htmlFor="" >Course</label>
-                <select onChange={this.handleCourse}>
-                    <option value="HTML&CSS">HTML&CSS</option>
-                    <option value="JavaScript">JavaScript</option>
-                    <option value="Java">Java</option>
+            <p><label htmlFor="">task</label><input type="text" onChange={this.handletask}  value={task} /></p>
+            <p><label htmlFor="">Description</label><input onChange={this.handledescription} type="text" value={description}/></p>
+            <p><label htmlFor="" >department</label>
+                <select onChange={this.handledepartment}>
+                <option value="Build">Build</option>
+                    <option value="Electric">Electric</option>
+                        <option value="Programming">Programming</option>
+                        <option value="CAD">CAD</option>
             </select>
             </p>
             <button>Send</button>
