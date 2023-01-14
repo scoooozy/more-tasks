@@ -1,7 +1,9 @@
 import { Component } from 'react'
+import React from 'react';
 import './App.css'
 import UserForm from '../UserForm/UserForm'
 import UserTable from '../UserTable/UserTable'
+
 class App extends Component{
     constructor(props) {
         super(props)
@@ -37,4 +39,5 @@ class App extends Component{
 
     }
 } 
+
 export default App

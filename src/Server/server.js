@@ -1,6 +1,17 @@
+const express = require('express')
+const app = express();
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+app.listen(3001, () => {
+  console.log('Server is running on port 3000');
+});
+
 const DB = require("sigidb");
 const db = DB("db.sqlite");
 global.db = db;
+//import { memberName } from "../src/components/UserForm/UserForm";
+
 class Person{
   constructor(fullName,branch,leader){
     this.fullName = fullName
@@ -9,12 +20,13 @@ class Person{
   }
 
 }
-let newPerson = new Person("Paul K.", "Build", false)
-console.log(newPerson)
-// db.set("person", newPerson)
+var memberName = "";
+//let newPerson = new Person(memberName, "Build", false)
+//console.log(newPerson)
+//db.set("person2", newPerson)
 // db.set("test", "hey");
 console.log('====================================');
-console.log(db.get("person"));
+console.log(db.all());
 console.log('====================================');
 
 

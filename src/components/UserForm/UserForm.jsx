@@ -1,7 +1,7 @@
 import React from "react";
 class UserForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             name: "",
             task: "",
@@ -9,9 +9,9 @@ class UserForm extends React.Component {
             department: "Build",
         }
     }
+
     handleUserName = (event) => {
-        this.setState({ name: event.target.value })
-        console.log(this.state.name)
+        this.setState({ name: event.target.value });
     }
     handletask = (event) => {
         this.setState({task: event.target.value})
@@ -39,6 +39,7 @@ class UserForm extends React.Component {
                 department: "HTML&CSS",
         })
     }
+
     render() {
         let { name, task, description} = this.state 
         return  <div>
@@ -60,5 +61,6 @@ class UserForm extends React.Component {
         </form>
     </div>
     }
+   
 }
 export default UserForm;
