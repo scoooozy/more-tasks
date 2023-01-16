@@ -1,43 +1,38 @@
-import { Component } from 'react'
-import React from 'react';
-import './App.css'
-import UserForm from '../UserForm/UserForm'
-import UserTable from '../UserTable/UserTable'
+import { Component } from "react";
+import React from "react";
+import "./App.css";
+import UserForm from "../UserForm/UserForm";
+import UserTable from "../UserTable/UserTable";
+import Menu from "../Menu/Menu";
 
-class App extends Component{
-    constructor(props) {
-        super(props)
-        this.state = {  
-            users: [],
-            isForm: true,
-            
-        }
-    }
-   
-    handleAddUser = (user) => {
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+      isForm: true,
+    };
+  }
 
-        this.setState((prevState) => {
-            return {
-                users: [...prevState.users, user],
-                isForm: false,
-            }
-        })
+  handleAddUser = (user) => {
+    this.setState((prevState) => {
+      return {
+        users: [...prevState.users, user],
+        isForm: false,
+      };
+    });
+  };
+  handleButton = () => {
+    this.setState({ isForm: true });
+  };
+  render() {
+    let { isForm, users } = this.state;
+    if (isForm) {
+      return <UserForm handleAddUser={this.handleAddUser} />;
+    } else {
+      return <UserTable users={users} handleButton={this.handleButton} />;
     }
-    handleButton = () => {
-        this.setState({isForm:true})
-    }
-    render() {
-        let { isForm, users} = this.state 
-        if (isForm) {
-            return <UserForm handleAddUser={this.handleAddUser} />
-        }
-        else {
-            return <UserTable users={users} handleButton={ this.handleButton} /> 
-        }
-            
- 
+  }
+}
 
-    }
-} 
-
-export default App
+export default App;
