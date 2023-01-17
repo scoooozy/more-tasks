@@ -9,7 +9,7 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World! PERSONALLY I HATE DATABASES');
 });
 app.post("/",(req, res) => {
   db.set("task",req.body)
