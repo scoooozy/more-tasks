@@ -1,7 +1,8 @@
 import { Component } from 'react'
 import './App.css'
 import UserForm from '../UserForm/UserForm'
-import UserTable from '../UserTable/UserTable'
+import UserTable from "../UserTable/UserTable"
+import { createBrowserRouter } from 'react-router-dom'
 class App extends Component{
     constructor(props) {
         super(props)
