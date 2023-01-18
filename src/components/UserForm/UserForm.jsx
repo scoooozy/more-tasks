@@ -26,7 +26,7 @@ const UserForm = (props) => {
   const handledepartment = (event) => {
     setState({ ...state, department: event.target.value });
   };
-  const handleForm = (event) => {
+  const handleForm =  async (event) => {
     event.preventDefault();
     let { name, task, description, department } = state;
     let user = {
@@ -35,23 +35,25 @@ const UserForm = (props) => {
       description,
       department,
     };
-    props.handleAddUser(user);
     setState({
       name: "",
       task: "",
       description: "",
       department: "HTML&CSS",
     });
-    fetch("/", {
+    console.log(user)
+    await fetch("http://localhost:8000/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
-    }).then(() => {});
+    })
+
+    navigate("/table");
   };
   let navigate = useNavigate();
   return (
     <div>
-      <form onSubmit={handleForm} action="">
+      <form onSubmit={handleForm}>
         <h1>Form-app</h1>
         <p>
           <label htmlFor="">Name</label>
@@ -79,9 +81,7 @@ const UserForm = (props) => {
           </select>
         </p>
         <button
-          onClick={() => {
-            navigate("/table");
-          }}
+          type="submit"
         >
           Send
         </button>

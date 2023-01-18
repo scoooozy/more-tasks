@@ -11,9 +11,12 @@ function UserTable({ handleButton }) {
 
   let [users, setUsers] = useState([])
   useEffect(() => {
-    fetch("/",)
-    .then(data => data.json())
-    
+    let getUser = async () => {
+        let response = await fetch("http://localhost:8000/task");
+        let data = await response.json();
+        setUsers(data);
+    }
+    getUser()
   }, [])
 
   return (

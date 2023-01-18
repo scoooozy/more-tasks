@@ -11,7 +11,7 @@ function App(){
           <Routes>
             <Route path="/" element={<Menu/>}/> 
             <Route path="/form" element={<UserForm/>}/> 
-            <Route path="/table" element={<UserTable users={[]} handleButton={()=>{}}/>}/> 
+            <Route path="/table" element={<UserTable handleButton={()=>{}}/>}/> 
           </Routes>
         </Router>
 
