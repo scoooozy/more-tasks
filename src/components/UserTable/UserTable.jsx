@@ -27,7 +27,7 @@ function UserTable({ handleButton }) {
             <th>Name:</th>
             <th>task:</th>
             <th>description:</th>
-            <th>department:</th>
+            <th>department:</th> 
           </tr>
         </thead>
         <tbody>
@@ -38,9 +38,11 @@ function UserTable({ handleButton }) {
                 <td>{user.task}</td>
                 <td>{user.description}</td>
                 <td>{user.department}</td>
+                <td><button className="remove">Remove</button></td> 
               </tr>
             );
           })}
+
         </tbody>
       </table>
       <button
