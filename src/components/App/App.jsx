@@ -1,41 +1,20 @@
-import { Component } from 'react'
+import React from 'react';
 import './App.css'
-import UserForm from '../UserForm/UserForm'
-import UserTable from "../UserTable/UserTable"
-import { createBrowserRouter } from 'react-router-dom'
-class App extends Component{
-    constructor(props) {
-        super(props)
-        this.state = {  
-            users: [],
-            isForm: true,
-            
-        }
-    }
-   
-    handleAddUser = (user) => {
+import Menu from "../Menu/Menu"
+import UserForm from '../UserForm/UserForm';
+import UserTable from '../UserTable/UserTable';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-        this.setState((prevState) => {
-            return {
-                users: [...prevState.users, user],
-                isForm: false,
-            }
-        })
-    }
-    handleButton = () => {
-        this.setState({isForm:true})
-    }
-    render() {
-        let { isForm, users} = this.state 
-        if (isForm) {
-            return <UserForm handleAddUser={this.handleAddUser} />
-        }
-        else {
-            return <UserTable users={users} handleButton={ this.handleButton} /> 
-        }
-            
- 
+function App(){
+    return(
+        <Router>
+          <Routes>
+            <Route path="/" element={<Menu/>}/> 
+            <Route path="/form" element={<UserForm/>}/> 
+            <Route path="/table" element={<UserTable users={[]} handleButton={()=>{}}/>}/> 
+          </Routes>
+        </Router>
 
-    }
-} 
+    )
+}
 export default App

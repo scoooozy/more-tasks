@@ -1,28 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./Menu.css"
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 
-import Home from "./Menu"
 function Menu(){
+  let navigate = useNavigate()
   return (
-    <nav class="sidenav">
-      <ul class="main-buttons">
-        <Router>
-          <Routes>
-            <Route path="/" element={""}/> 
-            <Route path="/" element={""}/> 
-          </Routes>
-        </Router>
+    <nav className="sidenav">
+      <ul className="main-buttons">
         <li className="hdr">
           morteam<span className="dot">.</span>
         </li>
         <li>
-          <button
-          >
+          <button onClick={() => navigate("/form")}>
             Add Task
           </button>
         </li>
         <li>
-          <button style={{ color: "white", textdecoration: "none" }}>
+          <button style={{ color: "white", textDecoration: "none" }} onClick={()=>{
+            navigate("/table")
+          }}>
             View Tasks
           </button>
         </li>
