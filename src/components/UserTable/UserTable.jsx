@@ -9,16 +9,29 @@ import {
 function UserTable({ handleButton }) {
   let navigate = useNavigate();
 
-  let [users, setUsers] = useState([])
+  let [users, setUsers] = useState([]);
   useEffect(() => {
     let getUser = async () => {
-        let response = await fetch("http://localhost:8000/task");
-        let data = await response.json();
-        setUsers(data);
-    }
-    getUser()
-  }, [])
-
+      let response = await fetch("http://localhost:8000/task");
+      let data = await response.json();
+      setUsers(data);
+    };
+    getUser();
+  }, []);
+  function refreshPage(){
+    window.location.reload()
+  }
+  async function remove(task) {
+    await fetch(
+      "http://localhost:8000/task",
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: task.id }),
+      }
+    );
+    refreshPage()
+  }
   return (
     <div>
       <table>
@@ -27,7 +40,7 @@ function UserTable({ handleButton }) {
             <th>Name:</th>
             <th>task:</th>
             <th>description:</th>
-            <th>department:</th> 
+            <th>department:</th>
           </tr>
         </thead>
         <tbody>
@@ -38,11 +51,14 @@ function UserTable({ handleButton }) {
                 <td>{user.task}</td>
                 <td>{user.description}</td>
                 <td>{user.department}</td>
-                <td><button className="remove">Remove</button></td> 
+                <td>
+                  <button className="remove" onClick={() => remove(user) }>
+                    Remove
+                  </button>
+                </td>
               </tr>
             );
           })}
-
         </tbody>
       </table>
       <button
@@ -50,7 +66,7 @@ function UserTable({ handleButton }) {
           navigate("/");
         }}
       >
-        Go to Form
+        Go Back
       </button>
     </div>
   );

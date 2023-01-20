@@ -15,7 +15,11 @@ app.get('/', (req, res) => {
   res.send('Hello World! I hate this database');
 });
 app.get("/task", (req,res) => {
-  res.send(db.all(item => item.id.startsWith("task")).map(item => item.value))
+  let tasks = db.all(item => item.id.startsWith("task"));
+  for(let [i, task] of tasks.entries()) {
+    tasks[i].value = {...task.value, "id": task.id};
+  }
+  res.send(tasks.map(item => item.value))
 })
 app.post("/",(req, res) => {
   let id = randomUUID();
@@ -23,6 +27,12 @@ app.post("/",(req, res) => {
   db.set(`task${id}`,req.body)
   res.send("success!!")
 })
+app.delete("/task", (req,res) => {
+  let { id } = req.body;
+  db.delete(id);
+  res.send("Task successfully deleted.");
+  
+});
 app.listen(8000, () => {
   console.log('Server is running on port 8000');
   console.log(db.all(item => item.id.startsWith("task")))
