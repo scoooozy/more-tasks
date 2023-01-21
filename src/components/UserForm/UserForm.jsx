@@ -26,7 +26,7 @@ const UserForm = (props) => {
   const handledepartment = (event) => {
     setState({ ...state, department: event.target.value });
   };
-  const handleForm =  async (event) => {
+  const handleForm = async (event) => {
     event.preventDefault();
     let { name, task, description, department } = state;
     let user = {
@@ -41,12 +41,12 @@ const UserForm = (props) => {
       description: "",
       department: "HTML&CSS",
     });
-    console.log(user)
+    console.log(user);
     await fetch("http://localhost:8000/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
-    })
+    });
 
     navigate("/table");
   };
@@ -80,11 +80,7 @@ const UserForm = (props) => {
             <option value="CAD">CAD</option>
           </select>
         </p>
-        <button
-          type="submit"
-        >
-          Send
-        </button>
+        <button type="submit">Send</button>
       </form>
     </div>
   );
