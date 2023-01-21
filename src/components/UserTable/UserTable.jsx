@@ -6,17 +6,17 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-function UserTable({ handleButton }) {
+function TaskTable({ handleButton }) {
   let navigate = useNavigate();
 
-  let [users, setUsers] = useState([]);
+  let [tasks, setTasks] = useState([]);
   useEffect(() => {
-    let getUser = async () => {
+    let gettask = async () => {
       let response = await fetch("http://localhost:8000/task");
       let data = await response.json();
-      setUsers(data);
+      setTasks(data);
     };
-    getUser();
+    gettask();
   }, []);
   function refreshPage(){
     window.location.reload()
@@ -44,15 +44,15 @@ function UserTable({ handleButton }) {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => {
+          {tasks.map((task) => {
             return (
               <tr>
-                <td>{user.name}</td>
-                <td>{user.task}</td>
-                <td>{user.description}</td>
-                <td>{user.department}</td>
+                <td>{task.name}</td>
+                <td>{task.task}</td>
+                <td>{task.description}</td>
+                <td>{task.department}</td>
                 <td>
-                  <button className="remove" onClick={() => remove(user) }>
+                  <button className="remove" onClick={() => remove(task) }>
                     Remove
                   </button>
                 </td>
@@ -72,4 +72,4 @@ function UserTable({ handleButton }) {
   );
 }
 
-export default UserTable;
+export default TaskTable;

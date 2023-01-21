@@ -6,7 +6,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-const UserForm = (props) => {
+const TaskForm = (props) => {
   const [state, setState] = useState({
     name: "",
     task: "",
@@ -14,7 +14,7 @@ const UserForm = (props) => {
     department: "Build",
   });
 
-  const handleUserName = (event) => {
+  const handletaskName = (event) => {
     setState({ ...state, name: event.target.value });
   };
   const handletask = (event) => {
@@ -29,7 +29,7 @@ const UserForm = (props) => {
   const handleForm = async (event) => {
     event.preventDefault();
     let { name, task, description, department } = state;
-    let user = {
+    let newtask = {
       name,
       task,
       description,
@@ -41,11 +41,11 @@ const UserForm = (props) => {
       description: "",
       department: "HTML&CSS",
     });
-    console.log(user);
+    console.log(newtask);
     await fetch("http://localhost:8000/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(newtask),
     });
 
     navigate("/table");
@@ -57,7 +57,7 @@ const UserForm = (props) => {
         <h1>Form-app</h1>
         <p>
           <label htmlFor="">Name</label>
-          <input onChange={handleUserName} type="text" value={state.name} />
+          <input onChange={handletaskName} type="text" value={state.name} />
         </p>
         <p>
           <label htmlFor="">task</label>
@@ -85,4 +85,4 @@ const UserForm = (props) => {
     </div>
   );
 };
-export default UserForm;
+export default TaskForm;
