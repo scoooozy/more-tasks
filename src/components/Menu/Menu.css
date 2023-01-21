@@ -1,8 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap");
-body, html {
-  overflow: hidden;
+@import url('https://css.gg/math-plus.css');
+body, html {  
   background-color: #232323;
+  padding: 0;
+  margin: 0;
+
 }
 
 @keyframes fadeInAnimation {
@@ -85,4 +88,28 @@ html, body {
 }
 .dot{
   color: #FF5F00;
+}
+button{
+  background-color: transparent;
+  border: none;
+  padding:  10px 20px;
+  font: 1em sans-serif;
+  color: white;
+  border: rgba(241, 154, 47, 0.8) solid 2px;
+  transition: all 1.5s;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+button:hover{
+  background-color: orange;
+  border: solid 2px white;
+}
+.plus{
+  color: white;
+}
+.eye{
+  color: white  ;
 }

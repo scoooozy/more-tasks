@@ -1,29 +1,41 @@
-import React from "react";
-import "./Menu.css"
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import * as React from 'react';
+import "./Menu.css";
+import eye from "./eye.svg"
+import plus from "./plus-circle.svg"
 
-function Menu(){
-  let navigate = useNavigate()
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
+
+function Menu() {
+  let navigate = useNavigate();
   return (
     <nav className="sidenav">
       <ul className="main-buttons">
+        
         <li className="hdr">
           morteam<span className="dot">.</span>
         </li>
         <li>
-          <button onClick={() => navigate("/form")}>
-            Add Task
-          </button>
+          <button onClick={() => navigate("/form")}><img src={plus} className="plus"/> Add Task</button> 
         </li>
         <li>
-          <button style={{ color: "white", textDecoration: "none" }} onClick={()=>{
-            navigate("/table")
-          }}>
-            View Tasks
+          
+          <button
+            style={{ color: "white", textDecoration: "none" }}
+            onClick={() => {
+              navigate("/table");
+            }}
+          >
+            <img src={eye} className="eye" />View Tasks
           </button>
         </li>
       </ul>
     </nav>
-  )
+  );
 }
 export default Menu;

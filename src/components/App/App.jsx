@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css'
 import Menu from "../Menu/Menu"
 import UserForm from '../UserForm/UserForm';
 import UserTable from '../UserTable/UserTable';

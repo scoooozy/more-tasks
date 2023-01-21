@@ -5,7 +5,8 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
-
+import "./Usertable.css";
+import removeIcon from "./trash-2.svg";
 function UserTable({ handleButton }) {
   let navigate = useNavigate();
 
@@ -18,49 +19,48 @@ function UserTable({ handleButton }) {
     };
     getUser();
   }, []);
-  function refreshPage(){
-    window.location.reload()
+  function refreshPage() {
+    window.location.reload();
   }
   async function remove(task) {
-    await fetch(
-      "http://localhost:8000/task",
-      {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: task.id }),
-      }
-    );
-    refreshPage()
+    await fetch("http://localhost:8000/task", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: task.id }),
+    });
+    refreshPage();
   }
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Name:</th>
-            <th>task:</th>
-            <th>description:</th>
-            <th>department:</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => {
-            return (
-              <tr>
-                <td>{user.name}</td>
-                <td>{user.task}</td>
-                <td>{user.description}</td>
-                <td>{user.department}</td>
-                <td>
-                  <button className="remove" onClick={() => remove(user) }>
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="task-page">
+        {users.map((user) => {
+          return (
+            <div className="card">
+              <div className="goLeft">
+                <button className="removebtn" onClick={() => remove(user)}>
+                  <img src={removeIcon} alt="trash" />
+                </button>
+              </div>
+              <div className="goUp">
+              <div className="card-header">
+                <h2 className="task-name">{user.task}</h2>
+                <h4 className="sub-heading">Created by: {user.name}</h4>
+              </div>
+              <div className="content">
+                <p>
+                  Description: <br></br> {user.description}
+                </p>
+              </div>
+              <div className="card-footer">
+                <h4>Department: {user.department} </h4>
+                
+              </div>
+            </div>
+              </div>
+
+          );
+        })}
+      </div>
       <button
         onClick={() => {
           navigate("/");

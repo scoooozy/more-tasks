@@ -5,6 +5,7 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
+import "./Userform.css"
 
 const UserForm = (props) => {
   const [state, setState] = useState({
@@ -52,27 +53,27 @@ const UserForm = (props) => {
   };
   let navigate = useNavigate();
   return (
-    <div>
-      <form onSubmit={handleForm}>
-        <h1>Form-app</h1>
-        <p>
-          <label htmlFor="">Name</label>
-          <input onChange={handleUserName} type="text" value={state.name} />
+    <div className="wrap">
+      <form onSubmit={handleForm} className="form" >
+        <h1>MorTasks</h1>
+        <p className="spacing">
+          <label htmlFor="">Name:</label>
+          <input placeholder="Name" onChange={handleUserName} type="text" value={state.name} />
         </p>
-        <p>
-          <label htmlFor="">task</label>
-          <input type="text" onChange={handletask} value={state.task} />
+        <p className="spacing">
+          <label htmlFor="">task:</label>
+          <input placeholder="Task" type="text" onChange={handletask} value={state.task} />
         </p>
-        <p>
-          <label htmlFor="">Description</label>
-          <input
+        <p className="spacing">
+          <label htmlFor="">Description:</label>
+          <input placeholder="Description"
             onChange={handledescription}
             type="text"
             value={state.description}
           />
         </p>
-        <p>
-          <label htmlFor="">department</label>
+        <p className="spacing">
+          <label htmlFor="">department:</label>
           <select onChange={handledepartment}>
             <option value="Build">Build</option>
             <option value="Electric">Electric</option>

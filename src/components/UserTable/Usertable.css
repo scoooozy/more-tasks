@@ -1,0 +1,50 @@
+.card{
+    background-color: rgba(255 255 255 );
+    display: flex;
+    width: 100%;
+    max-width: 350px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 15px;
+    padding: 20px;
+}
+h2, h4, h5 {
+    font-weight: 500;
+}
+.content p{
+    color:black;    
+}
+.card-footer button{
+    color: black;
+}
+.task-page{
+ display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+.card-header > h2,h4{
+    margin: 2px 0;
+}
+.card-header{
+    padding: 8px 0 ;
+}
+.card-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.card-footer > h5{
+    padding: 5px; 
+    
+}
+.goLeft{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.goUp{
+    margin: -48px 0 0 0;
+}
