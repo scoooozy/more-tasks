@@ -6,12 +6,15 @@ import {
   useNavigate,
 } from "react-router-dom";
 import "./Userform.css"
+let date = new Date();
+let fdate = date.toISOString().substring(0, 10);
 
 const UserForm = (props) => {
   const [state, setState] = useState({
     name: "",
     task: "",
     description: "",
+    date:fdate,
     department: "Build",
   });
 
@@ -27,19 +30,24 @@ const UserForm = (props) => {
   const handledepartment = (event) => {
     setState({ ...state, department: event.target.value });
   };
+  const handledate = (event) => {
+    setState({ ...state, date: event.target.value });
+  };
   const handleForm =  async (event) => {
     event.preventDefault();
-    let { name, task, description, department } = state;
+    let { name, task, date,description, department } = state;
     let user = {
       name,
       task,
       description,
       department,
+      date
     };
     setState({
       name: "",
       task: "",
       description: "",
+      date:fdate,
       department: "HTML&CSS",
     });
     console.log(user)
@@ -55,14 +63,22 @@ const UserForm = (props) => {
   return (
     <div className="wrap">
       <form onSubmit={handleForm} className="form" >
-        <h1>MorTasks</h1>
+        <h1>Mor<span id="MorTasks">Tasks</span></h1>
         <p className="spacing">
           <label htmlFor="">Name:</label>
           <input placeholder="Name" onChange={handleUserName} type="text" value={state.name} />
         </p>
         <p className="spacing">
-          <label htmlFor="">task:</label>
+          <label htmlFor="">Task:</label>
           <input placeholder="Task" type="text" onChange={handletask} value={state.task} />
+        </p>
+        <p className="spacing">
+          <label htmlFor="">Due Date:</label>
+          <input placeholder="Today's date"
+            onChange={handledate}
+            type="date"
+            value={state.date}
+          />
         </p>
         <p className="spacing">
           <label htmlFor="">Description:</label>
@@ -72,13 +88,14 @@ const UserForm = (props) => {
             value={state.description}
           />
         </p>
+
         <p className="spacing">
-          <label htmlFor="">department:</label>
+          <label htmlFor="">Department:</label>
           <select onChange={handledepartment}>
-            <option value="Build">Build</option>
-            <option value="Electric">Electric</option>
-            <option value="Programming">Programming</option>
-            <option value="CAD">CAD</option>
+            <option className="options" value="Build">Build</option>
+            <option className="options" value="Electric">Electric</option>
+            <option className="options" value="Programming">Programming</option>
+            <option className="options" value="CAD">CAD</option>
           </select>
         </p>
         <button

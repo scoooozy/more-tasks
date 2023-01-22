@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import "./Usertable.css";
 import removeIcon from "./trash-2.svg";
-const leftPad = require('left-pad')
-leftPad('haha',5 )
+
 function UserTable({ handleButton }) {
   let navigate = useNavigate();
 
@@ -34,47 +33,45 @@ function UserTable({ handleButton }) {
   }
   return (
     <div>
- <section className="page">
-      <div className="task-part" >
-        {users.map((user) => {
-          return (
-            <div className="card">
-              <div className="goLeft">
-                <button className="removebtn" onClick={() => remove(user)}>
-                  <img src={removeIcon} alt="trash" />
-                </button>
+      <section className="page">
+        <div className="task-part">
+          {users.map((user) => {
+            return (
+              <div className="card">
+                <div className="card-header">
+                  <div className="heading">
+                    <h2 className="task-name">{user.task}</h2>
+                    <button className="removebtn" onClick={() => remove(user)}>
+                      <img src={removeIcon} alt="trash" />
+                    </button>
+                  </div>
+                  <hr />
+                  <div className="sub-heading">
+                    <h6 >Created by: {user.name}</h6>
+                    <h6> Day due: {user.date}</h6>
+                  </div>
+                </div>
+                <div className="content">
+                  <p>
+                    Description: <br></br> {user.description}
+                  </p>
+                </div>
+                <div className="card-footer">
+                  <h6>Department: {user.department} </h6>
+                </div>
               </div>
-              <div className="goUp">
-              <div className="card-header">
-                <h2 className="task-name">{user.task}</h2>
-                <h4 className="sub-heading">Created by: {user.name}</h4>
-              </div>
-              <div className="content">
-                <p>
-                  Description: <br></br> {user.description}
-                </p>
-              </div>
-              <div className="card-footer">
-                <h4>Department: {user.department} </h4>
-                
-              </div>
-            </div>
-              </div>
-
-          );
-        })}
-      </div>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-      >
-        Go Back
-      </button>
-    </section>
+            );
+          })}
+        </div>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Go Back
+        </button>
+      </section>
     </div>
-   
-
   );
 }
 
