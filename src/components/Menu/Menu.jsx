@@ -37,6 +37,17 @@ function Menu() {
               View Tasks
             </button>
           </li>
+          <li>
+            <button
+              style={{ color: "white", textDecoration: "none" }}
+              onClick={() => {
+                navigate("/completed");
+              }}
+            >
+              <img src={eye} className="eye" />
+              Completed Tasks
+            </button>
+          </li>
         </ul>
       </nav>
       <section className="fun">

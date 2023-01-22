@@ -5,12 +5,9 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
-import "./Usertable.css";
-import removeIcon from "./trash-2.svg";
+import "./Completed.css";
 import back from "./arrow-left.svg"
-import check from "./check.svg"
-
-function UserTable({ handleButton }) {
+function CompletedTable({ handleButton }) {
   let navigate = useNavigate();
 
   let [users, setUsers] = useState([]);
@@ -43,15 +40,6 @@ function UserTable({ handleButton }) {
                 <div className="card-header">
                   <div className="heading">
                     <h2 className="task-name">{user.task}</h2>
-                    <div className="card-buttons">
-
-                    <button className="removebtn">
-                      <img src={check} alt="" />
-                    </button>
-                    <button className="removebtn" onClick={() => remove(user)}>
-                      <img src={removeIcon} alt="trash" />
-                    </button>
-                    </div>
                   </div>
                   <hr />
                   <div className="sub-heading">
@@ -86,4 +74,4 @@ function UserTable({ handleButton }) {
   );
 }
 
-export default UserTable;
+export default CompletedTable;

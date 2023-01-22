@@ -5,7 +5,8 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
-import "./Userform.css"
+import "./Userform.css";
+import send from  "./send.svg"
 let date = new Date();
 let fdate = date.toISOString().substring(0, 10);
 
@@ -14,7 +15,7 @@ const UserForm = (props) => {
     name: "",
     task: "",
     description: "",
-    date:fdate,
+    date: fdate,
     department: "Build",
   });
 
@@ -33,76 +34,100 @@ const UserForm = (props) => {
   const handledate = (event) => {
     setState({ ...state, date: event.target.value });
   };
-  const handleForm =  async (event) => {
+  const handleForm = async (event) => {
     event.preventDefault();
-    let { name, task, date,description, department } = state;
+    let { name, task, date, description, department } = state;
     let user = {
       name,
       task,
       description,
       department,
-      date
+      date,
     };
     setState({
       name: "",
       task: "",
       description: "",
-      date:fdate,
+      date: fdate,
       department: "HTML&CSS",
     });
-    console.log(user)
+    console.log(user);
     await fetch("http://localhost:8000/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
-    })
+    });
 
     navigate("/table");
   };
   let navigate = useNavigate();
   return (
     <div className="wrap">
-      <form onSubmit={handleForm} className="form" >
-        <h1>Mor<span id="MorTasks">Tasks</span></h1>
-        <p className="spacing">
-          <label htmlFor="">Name:</label>
-          <input placeholder="Name" onChange={handleUserName} type="text" value={state.name} />
+      <form onSubmit={handleForm} className="form">
+        <h1 className="Mor">
+          Mor<span id="MorTasks">Tasks</span>
+        </h1>
+        <div className="align">
+          <p className="lol">
+            <label htmlFor="">Name:</label>
+            <input
+            id="hi"
+              placeholder="Name"
+              onChange={handleUserName}
+              type="text"
+              value={state.name}
+            />
+          </p>
+          <p className="lol">
+            <label htmlFor="">Task:</label>
+            <input
+            id="hi"
+              placeholder="Task"
+              type="text"
+              onChange={handletask}
+              value={state.task}
+            />
+          </p>
+        </div>
+        <div className="align"> 
+          <p className="lol">
+            <label htmlFor="">Due Date:</label>
+            <input
+              placeholder="Today's date"
+              onChange={handledate}
+              type="date"
+              value={state.date}
+            />
+          </p>
+          <p className="lol">
+            <label htmlFor="">Department:</label>
+            <select onChange={handledepartment}>
+              <option className="options" value="Build">
+                Build
+              </option>
+              <option className="options" value="Electric">
+                Electric
+              </option>
+              <option className="options" value="Programming">
+                Programming
+              </option>
+              <option className="options" value="CAD">
+                CAD
+              </option>
+            </select>
+          </p>
+        </div>
+        <p className="lol">
+            <label htmlFor="">Description:</label>
+            <textarea className="describe"
+              placeholder="Description..."
+              onChange={handledescription}
+              value={state.description}
+            />
         </p>
-        <p className="spacing">
-          <label htmlFor="">Task:</label>
-          <input placeholder="Task" type="text" onChange={handletask} value={state.task} />
-        </p>
-        <p className="spacing">
-          <label htmlFor="">Due Date:</label>
-          <input placeholder="Today's date"
-            onChange={handledate}
-            type="date"
-            value={state.date}
-          />
-        </p>
-        <p className="spacing">
-          <label htmlFor="">Description:</label>
-          <input placeholder="Description"
-            onChange={handledescription}
-            type="text"
-            value={state.description}
-          />
-        </p>
+        
 
-        <p className="spacing">
-          <label htmlFor="">Department:</label>
-          <select onChange={handledepartment}>
-            <option className="options" value="Build">Build</option>
-            <option className="options" value="Electric">Electric</option>
-            <option className="options" value="Programming">Programming</option>
-            <option className="options" value="CAD">CAD</option>
-          </select>
-        </p>
-        <button
-          type="submit"
-        >
-          Send
-        </button>
+        <button type="submit"> <img src={send} alt="" /> Send</button>
       </form>
     </div>
   );
