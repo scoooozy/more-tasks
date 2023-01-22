@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import "./Usertable.css";
 import removeIcon from "./trash-2.svg";
+const leftPad = require('left-pad')
+leftPad('haha',5 )
 function UserTable({ handleButton }) {
   let navigate = useNavigate();
 
@@ -32,7 +34,8 @@ function UserTable({ handleButton }) {
   }
   return (
     <div>
-      <div className="task-page">
+ <section className="page">
+      <div className="task-part" >
         {users.map((user) => {
           return (
             <div className="card">
@@ -68,7 +71,10 @@ function UserTable({ handleButton }) {
       >
         Go Back
       </button>
+    </section>
     </div>
+   
+
   );
 }
 

@@ -2,7 +2,7 @@
     background-color: rgba(255 255 255 );
     display: flex;
     width: 100%;
-    max-width: 350px;
+    max-width: 400px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -18,10 +18,19 @@ h2, h4, h5 {
 .card-footer button{
     color: black;
 }
-.task-page{
- display: flex;
+.task-part{
+    display: flex;
     flex-direction: row;
-    gap: 25px;
+    gap: 30px;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    min-width: 400px;
+    padding: 10px;
+    margin: 0 0 20px 0 ;
+    flex-wrap: wrap;
+
 }
 .card-header > h2,h4{
     margin: 2px 0;
@@ -44,7 +53,24 @@ h2, h4, h5 {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    z-index: 999;
+    
+}
+.goLeft > button{
+    border: none;
+}
+.removebtn:hover{
+    border: orange 2px solid;
+    background-color: transparent;
 }
 .goUp{
     margin: -48px 0 0 0;
+}
+.page{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
