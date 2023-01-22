@@ -41,8 +41,7 @@ function Menu() {
       </nav>
       <section className="fun">
           <div className="date-and-countdown">
-              <DateTime/> 
-               
+              <DateTime/>
           </div>
       </section>
     </div>
