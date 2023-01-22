@@ -37,7 +37,7 @@ function Menu() {
               View Tasks
             </button>
           </li>
-          <li>
+          {/* <li>
             <button
               style={{ color: "white", textDecoration: "none" }}
               onClick={() => {
@@ -47,7 +47,7 @@ function Menu() {
               <img src={eye} className="eye" />
               Completed Tasks
             </button>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <section className="fun">

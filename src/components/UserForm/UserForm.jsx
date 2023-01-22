@@ -17,6 +17,7 @@ const UserForm = (props) => {
     description: "",
     date: fdate,
     department: "Build",
+    isCompleted: false
   });
 
   const handleUserName = (event) => {
@@ -36,13 +37,14 @@ const UserForm = (props) => {
   };
   const handleForm = async (event) => {
     event.preventDefault();
-    let { name, task, date, description, department } = state;
+    let { name, task,isCompleted ,date, description, department } = state;
     let user = {
       name,
       task,
       description,
       department,
       date,
+      isCompleted
     };
     setState({
       name: "",
@@ -50,6 +52,7 @@ const UserForm = (props) => {
       description: "",
       date: fdate,
       department: "HTML&CSS",
+      isCompleted: false
     });
     console.log(user);
     await fetch("http://localhost:8000/", {
