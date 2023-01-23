@@ -32,7 +32,7 @@ p:has(.spacing) {
 }
 label {
   padding: 0 15px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
 }
 select {
@@ -96,7 +96,7 @@ select{
     border-radius: 0;
     height: 200px;
     width: 500px;
-
+    resize: none;
 }
 .lol{
     display: flex;
@@ -107,4 +107,14 @@ select{
 }
 .Mor{
     font-size: 56px;
+}
+.datepicker {
+  color-scheme: dark;
+}
+
+button .rotate{
+  transition: all 0.5s ease-in-out ;
+}
+button:hover .rotate{
+  transform: rotate3d(3, 1 , 6, 720deg);
 }

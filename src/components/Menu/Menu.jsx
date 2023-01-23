@@ -23,7 +23,7 @@ function Menu() {
           </li>
           <li>
             <button onClick={() => navigate("/form")}>
-              <img src={plus} className="plus" /> Add Task
+              <img src={plus} className="plus rotate" /> Add Task
             </button>
           </li>
           <li>
@@ -33,7 +33,7 @@ function Menu() {
                 navigate("/table");
               }}
             >
-              <img src={eye} className="eye" />
+              <img src={eye} className="eye rotate" />
               View Tasks
             </button>
           </li>
