@@ -7,7 +7,7 @@ import UserTable from '../UserTable/UserTable';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App(){
-    return(
+  return (
         <Router>
           <Routes>
             <Route path="/" 
