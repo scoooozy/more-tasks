@@ -100,6 +100,7 @@ const UserForm = (props) => {
               onChange={handledate}
               type="date"
               value={state.date}
+              className ="datepicker"
             />
           </p>
           <p className="lol">
@@ -130,7 +131,7 @@ const UserForm = (props) => {
         </p>
         
 
-        <button type="submit"> <img src={send} alt="" /> Send</button>
+        <button type="submit" className="spinbtn"> <img src={send} alt="" className="rotate" /> Send</button>
       </form>
     </div>
   );
